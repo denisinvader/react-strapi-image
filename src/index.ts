@@ -1,1 +1,2 @@
-export * from './StrapiImageImg';
+export * from './types';
+export * from './StrapiImage';
