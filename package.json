@@ -1,6 +1,6 @@
 {
   "name": "react-strapi-image",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "license": "MIT",
   "author": "Mikhail Panichev <denis.invader@gmail.com>",
   "repository": "github:denisinvader/react-strapi-image",
@@ -10,7 +10,9 @@
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "files": ["dist/**/*"],
+  "files": [
+    "dist/**/*"
+  ],
   "scripts": {
     "build": "tsc -b && vite build",
     "lint": "eslint .",
