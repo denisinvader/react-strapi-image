@@ -3,6 +3,10 @@
   "version": "0.0.0",
   "license": "MIT",
   "author": "Mikhail Panichev <denis.invader@gmail.com>",
+  "repository": "github:denisinvader/react-strapi-image",
+  "bugs": {
+    "url": "https://github.com/denisinvader/react-strapi-image/issues"
+  },
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
