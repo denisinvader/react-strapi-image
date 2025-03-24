@@ -4,6 +4,7 @@
   "license": "MIT",
   "author": "Mikhail Panichev <denis.invader@gmail.com>",
   "repository": "github:denisinvader/react-strapi-image",
+  "keywords": ["Strapi", "image", "images"],
   "bugs": {
     "url": "https://github.com/denisinvader/react-strapi-image/issues"
   },
