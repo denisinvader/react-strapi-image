@@ -10,10 +10,10 @@ export interface StrapiImageProps extends Omit<
   image: StrapiMediaImage;
   formats?: string[];
   transformUrl?: (url: string) => string;
-  sizes?: {
+  sizes?: string | {
     [K: `${number}rem`]: string;
     [K: `${number}px`]: string;
-    fallback: string;
+    fallback?: string;
   };
   desktopFirstSizes?: boolean;
   disableSizesAutoSort?: boolean;

@@ -10,7 +10,7 @@ export default meta;
 
 type Story = StoryObj<typeof StrapiImage>;
 
-export const Default: Story = {
+export const Playground: Story = {
   decorators: [(Story) => <WindowSizeIndicator><Story /></WindowSizeIndicator>],
   args: {
     image: {
@@ -43,6 +43,13 @@ export const Default: Story = {
       '750px': '1000px',
       '1000px': '100vw',
     },
-    aspectRatio: '1 / 1',
+  },
+};
+
+export const StringSizes: Story = {
+  decorators: [(Story) => <WindowSizeIndicator><Story /></WindowSizeIndicator>],
+  args: {
+    ...Playground.args,
+    sizes: 'calc(100vw - 2rem)',
   },
 };
