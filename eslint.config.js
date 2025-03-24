@@ -3,10 +3,12 @@ import js from '@eslint/js'
 import stylistic from '@stylistic/eslint-plugin'
 import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
+import storybook from 'eslint-plugin-storybook';
 import tseslint from 'typescript-eslint'
 
 export default tseslint.config(
   { ignores: ['dist'] },
+  ...storybook.configs['flat/recommended'],
   {
     extends: [
       js.configs.recommended,
@@ -33,6 +35,8 @@ export default tseslint.config(
       ...reactHooks.configs.recommended.rules,
       '@stylistic/indent': ['error', 2],
       '@stylistic/semi': ['error', 'always'],
+      '@stylistic/quote-props': ['error', 'as-needed'],
+      '@stylistic/arrow-parens': ['error', 'always'],
       '@stylistic/member-delimiter-style': [
         'error',
         {
@@ -44,4 +48,4 @@ export default tseslint.config(
       'react/react-in-jsx-scope': 'off',
     },
   },
-)
+);
