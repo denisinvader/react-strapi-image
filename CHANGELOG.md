@@ -2,6 +2,7 @@
 
 ## v0.2.0
 
+- **Breaking:** rename `sizes.fallback` to `sizes.initial`.
 - **Feature:** add `<StrapiImageConfigProvider />` component.
 
 ## v0.1.0

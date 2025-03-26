@@ -24,7 +24,7 @@ test('supports string values for sizes', () => {
 test('builds sizes string using mobile-first strategy by default', () => {
   const result = computeSizesValue({
     sizes: {
-      fallback: '16px',
+      initial: '16px',
       '20rem': '100px',
       '30rem': '256px',
     },
@@ -33,7 +33,7 @@ test('builds sizes string using mobile-first strategy by default', () => {
   expect(result).toBe('(min-width: 30rem) 256px, (min-width: 20rem) 100px, 16px');
 });
 
-test('assigns "100vw" as a fallback size when omitted', () => {
+test('assigns "100vw" as an initial size when omitted', () => {
   const result = computeSizesValue({
     sizes: {
       '20rem': '100px',
@@ -49,7 +49,7 @@ test('sorts sizes automatically by default', () => {
 
   const result1 = computeSizesValue({
     sizes: {
-      fallback: '320px',
+      initial: '320px',
       '480px': '480px',
       '768px': '768px',
       '1024px': '1024px',
@@ -57,7 +57,7 @@ test('sorts sizes automatically by default', () => {
   });
   const result2 = computeSizesValue({
     sizes: {
-      fallback: '320px',
+      initial: '320px',
       '1024px': '1024px',
       '768px': '768px',
       '480px': '480px',
@@ -66,7 +66,7 @@ test('sorts sizes automatically by default', () => {
   const result3 = computeSizesValue({
     sizes: {
       '1024px': '1024px',
-      fallback: '320px',
+      initial: '320px',
       '480px': '480px',
       '768px': '768px',
     },
@@ -82,7 +82,7 @@ test('respects disableAutoSort option to prevent automatic sorting', () => {
     disableAutoSort: true,
     sizes: {
       '1024px': '1024px',
-      fallback: '320px',
+      initial: '320px',
       '56rem': '480px',
       '768px': '768px',
     },
@@ -97,7 +97,7 @@ test('supports desktop-first strategy when enabled', () => {
     sizes: {
       '768px': '736px',
       '480px': '464px',
-      fallback: '1200px',
+      initial: '1200px',
     },
   });
 
@@ -110,7 +110,7 @@ test('sorts sizes automatically when using desktop-first strategy', () => {
   const result1 = computeSizesValue({
     desktopFirst: true,
     sizes: {
-      fallback: '1440px',
+      initial: '1440px',
       '480px': '480px',
       '768px': '768px',
       '1024px': '1024px',
@@ -119,7 +119,7 @@ test('sorts sizes automatically when using desktop-first strategy', () => {
   const result2 = computeSizesValue({
     desktopFirst: true,
     sizes: {
-      fallback: '1440px',
+      initial: '1440px',
       '1024px': '1024px',
       '768px': '768px',
       '480px': '480px',
@@ -129,7 +129,7 @@ test('sorts sizes automatically when using desktop-first strategy', () => {
     desktopFirst: true,
     sizes: {
       '1024px': '1024px',
-      fallback: '1440px',
+      initial: '1440px',
       '480px': '480px',
       '768px': '768px',
     },

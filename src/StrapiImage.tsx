@@ -14,7 +14,7 @@ export interface StrapiImageProps extends Omit<
   sizes?: string | {
     [K: `${number}rem`]: string;
     [K: `${number}px`]: string;
-    fallback?: string;
+    initial?: string;
   };
   desktopFirstSizes?: boolean;
   disableSizesAutoSort?: boolean;

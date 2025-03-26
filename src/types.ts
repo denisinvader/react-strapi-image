@@ -34,7 +34,7 @@ export interface StrapiImageConfig {
   sizes?: string | {
     [K: `${number}rem`]: string;
     [K: `${number}px`]: string;
-    fallback?: string;
+    initial?: string;
   };
   desktopFirstSizes?: boolean;
   disableSizesAutoSort?: boolean;

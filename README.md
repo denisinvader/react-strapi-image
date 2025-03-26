@@ -61,7 +61,7 @@ Example usage:
   image={response.article.image}
   formats={['xs', 'sm', 'md', 'lg']}
   sizes={{
-      fallback: '100vw',
+      initial: '100vw',
       '48rem': '46rem',
       '64rem': '62rem',
       '90rem': '88rem',
@@ -78,7 +78,7 @@ Component extends `ComponentPropsWithRef<'img'>` omitting `src`, `srcSet` and `s
 |`image`|`StrapiMediaImage`|Strapi uploaded image attributes. **Required.**|
 |`formats`|`string[]`|List of uploaded image formats to use. Defaults to `['small', 'medium', 'large']` aligning with the [default Strapi Upload plugin configuration.](https://docs.strapi.io/dev-docs/plugins/upload/#responsive-images)|
 |`transformUrl`|`(url: string) => string`|Function to transform image URL. Defaults to `(url) => url`.|
-|`sizes`|``string \| { [K: `${number}rem`]: string; [K: `${number}px`]: string; fallback: string }``|Defines image sizes for different screen widths. See detailed information below.|
+|`sizes`|``string \| { [K: `${number}rem`]: string; [K: `${number}px`]: string; initial: string }``|Defines image sizes for different screen widths. See detailed information below.|
 |`desktopFirstSizes`|`boolean`|Uses desktop-first media queries when generating the `sizes` attribute. Defaults to `false`.|
 |`disableSizesAutoSort`|`boolean`|Disables automatic sorting of the `sizes` keys. See more details below. Defaults to `false`.|
 |`aspectRatio`|`'intrinsic' \| string`|CSS aspect ratio for the image. If set to `'intrinsic'`, the ratio is computed from the `image` object. Defaults to `'intrinsic'`.|
@@ -94,7 +94,7 @@ By default, unless you explicitly set `disabledSizesAutoSort` property, media co
 * Mobile-first strategy (default).
 * Desktop-first strategy (if `desktopFirstSizes` is set to `true`).
 
-The `sizes.fallback` value always placed at the end of the list and defaults to `'100vw'` if omitted.
+The `sizes.initial` value always placed at the end of the list and defaults to `'100vw'` if omitted.
 
 If described logic doesn't suit your needs, you can:
 
@@ -149,7 +149,7 @@ export interface StrapiImageConfig {
   sizes?: string | {
     [K: `${number}rem`]: string;
     [K: `${number}px`]: string;
-    fallback?: string;
+    initial?: string;
   };
   desktopFirstSizes?: boolean;
   disableSizesAutoSort?: boolean;

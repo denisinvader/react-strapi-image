@@ -17,7 +17,7 @@ export const Playground: Story = {
     image: generateMockImage({ width: 2000, height: 1125 }),
     formats: ['small', 'medium', 'large'],
     sizes: {
-      fallback: '100vw',
+      initial: '100vw',
       '500px': '750px',
       '750px': '1000px',
       '1000px': '100vw',

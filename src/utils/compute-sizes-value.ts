@@ -2,7 +2,7 @@ interface ComputeSizesValueProps {
   sizes?: string | {
     [x: `${number}rem`]: string;
     [x: `${number}px`]: string;
-    fallback?: string;
+    initial?: string;
   };
   desktopFirst?: boolean;
   disableAutoSort?: boolean;
@@ -54,14 +54,14 @@ export const computeSizesValue = function computeSizesValue({
     return sizes;
   }
 
-  const { fallback, ...breakpoints } = sizes;
+  const { initial, ...breakpoints } = sizes;
   const sortedBreakpoints = getSortedBreakpoints(breakpoints, desktopFirst, disableAutoSort);
   const mediaCondition = desktopFirst ? 'max-width' : 'min-width';
 
   const values = sortedBreakpoints.map((d) => (
     `(${mediaCondition}: ${d.condition}) ${d.width}`
   ));
-  values.push(fallback || '100vw');
+  values.push(initial || '100vw');
 
   return values.join(', ');
 };

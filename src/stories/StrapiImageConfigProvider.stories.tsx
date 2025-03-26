@@ -47,7 +47,7 @@ export const GridStory: Story = {
     config: {
       formats: ['xs', 'sm', 'md', 'lg', 'xl'],
       sizes: {
-        fallback: '100vw',
+        initial: '100vw',
         '520px': '50vw',
         '768px': '221.33px',
         '1024px': '285.33px',
