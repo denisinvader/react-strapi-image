@@ -9,23 +9,23 @@ interface StrapiMediaImageFile {
   url: string;
 }
 
-interface StrapiMediaImageFormat extends StrapiMediaImageFile {
+export interface StrapiMediaImageFormat extends StrapiMediaImageFile {
   path?: unknown;
   sizeInBytes?: number;
 }
 
-export interface StrapiMediaImage extends StrapiMediaImageFile {
+export interface StrapiMediaImage<F = unknown> extends StrapiMediaImageFile {
   id?: number;
   documentId?: string;
   publishedAt?: string;
-  alternativeText: string | null;
+  alternativeText?: string | null;
   caption?: string | null;
   previewUrl?: string | null;
   provider?: string;
   provider_metadata?: unknown;
   createdAt?: string;
   updatedAt?: string;
-  formats?: Record<string, StrapiMediaImageFormat | undefined>;
+  formats?: Record<string, F>;
 }
 
 export interface StrapiImageConfig {

@@ -1,4 +1,5 @@
 import { StrapiMediaImage } from '../types';
+import { checkIsImageFormat } from './check-is-image-format';
 
 interface ComputeSrcSetValueProps {
   image: StrapiMediaImage;
@@ -19,7 +20,7 @@ export const computeSrcSetValue = function computeSrcSetValue({
   let result = `${transformUrl(image.url)} ${image.width}w`;
   for (const format of formats) {
     const imageFormat = image.formats[format];
-    if (!imageFormat) {
+    if (!checkIsImageFormat(imageFormat)) {
       continue;
     }
 

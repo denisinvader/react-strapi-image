@@ -1,5 +1,9 @@
 # Changelog
 
+## wip
+
+- **Fix:** update `StrapiMediaImage` interface to match `@strapi/blocks-react-renderer` definition.
+
 ## v0.2.0
 
 - **Breaking:** rename `sizes.fallback` to `sizes.initial`.
