@@ -100,3 +100,58 @@ If described logic doesn't suit your needs, you can:
 
 * Disable auto-sorting by setting `disabledSizesAutoSort` to `true`, which will preserve the original order of object keys.
 * Manually define `sizes` attribute by passing an explicit string value instead of an object.
+
+
+### `<StrapiImageConfigProvider />`
+
+The `<StrapiImageConfigProvider />` sets default configuration props, eliminating the need to repeat them across multiple components.
+
+Props explicitly set on individual components override matching values provided in the configuration.
+
+#### Example Usage
+
+```tsx
+import {
+  StrapiImage,
+  StrapiImageConfig,
+  StrapiImageConfigProvider,
+} from 'react-strapi-image';
+
+const strapiImageConfig: StrapiImageConfig = {
+  formats: ['xs', 'sm', 'md'],
+  sizes: {
+    '520px': '50vw',
+    '768px': '222px',
+    '1024px': '285px',
+    '1280px': '370px',
+  },
+};
+
+export function App() {
+  return (
+    <StrapiImageConfigProvider config={strapiImageConfig}>
+      <StrapiImage image={image1} />
+      {/* Overrides the `sizes` value from the provider */}
+      <StrapiImage image={image2} sizes="100vw" />
+    </StrapiImageConfigProvider>
+  );
+}
+```
+
+> **Note:** since this component uses a standard React Context, the `config` prop **should be defined outside of React components or memoized** to avoid unnecessary re-renders.
+
+#### `config` Prop Type Definition:
+
+```ts
+export interface StrapiImageConfig {
+  formats?: string[];
+  transformUrl?: (url: string) => string;
+  sizes?: string | {
+    [K: `${number}rem`]: string;
+    [K: `${number}px`]: string;
+    fallback?: string;
+  };
+  desktopFirstSizes?: boolean;
+  disableSizesAutoSort?: boolean;
+}
+```

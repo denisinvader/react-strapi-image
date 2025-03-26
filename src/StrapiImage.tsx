@@ -2,6 +2,7 @@ import { ComponentPropsWithRef, CSSProperties, memo, useMemo } from 'react';
 import { StrapiMediaImage } from './types';
 import { computeSizesValue } from './utils/compute-sizes-value';
 import { computeSrcSetValue } from './utils/compute-src-set-value';
+import { useStrapiImageConfigContext } from './StrapiImageConfigContext';
 
 export interface StrapiImageProps extends Omit<
   ComponentPropsWithRef<'img'>,
@@ -21,35 +22,47 @@ export interface StrapiImageProps extends Omit<
   style?: Omit<CSSProperties, 'aspectRatio'>;
 }
 
-const defaultFormats = ['large', 'medium', 'small'];
-const defaultTransformUrl = (url: string) => url;
-
 export const StrapiImage = memo(function StrapiImage({
   image,
-  formats = defaultFormats,
-  transformUrl = defaultTransformUrl,
+  formats,
+  transformUrl,
   sizes,
-  desktopFirstSizes = false,
-  disableSizesAutoSort = false,
+  desktopFirstSizes,
+  disableSizesAutoSort,
   aspectRatio = 'intrinsic',
   style,
   alt,
   ...props
 }: StrapiImageProps) {
-  const srcSetValue = useMemo<string | undefined>(() => (
-    computeSrcSetValue({ image, formats, transformUrl })
-  ), [image, formats, transformUrl]);
+  const config = useStrapiImageConfigContext();
+  const formatsValue = formats || config.formats;
+  const transformUrlValue = transformUrl || config.transformUrl;
+  const sizesValue = sizes || config.sizes;
+  const desktopFirstSizesValue = typeof desktopFirstSizes === 'boolean'
+    ? desktopFirstSizes
+    : config.desktopFirstSizes;
+  const disableSizesAutoSortValue = typeof disableSizesAutoSort === 'boolean'
+    ? disableSizesAutoSort
+    : config.disableSizesAutoSort;
 
-  const sizesValue = useMemo<string | undefined>(() => {
-    if (!srcSetValue) {
+  const srcSetAttribute = useMemo<string | undefined>(() => (
+    computeSrcSetValue({
+      image,
+      formats: formatsValue,
+      transformUrl: transformUrlValue,
+    })
+  ), [image, formatsValue, transformUrlValue]);
+
+  const sizesAttribute = useMemo<string | undefined>(() => {
+    if (!srcSetAttribute) {
       return undefined;
     }
     return computeSizesValue({
-      sizes,
-      desktopFirst: desktopFirstSizes,
-      disableAutoSort: disableSizesAutoSort,
+      sizes: sizesValue,
+      desktopFirst: desktopFirstSizesValue,
+      disableAutoSort: disableSizesAutoSortValue,
     });
-  }, [srcSetValue, sizes, desktopFirstSizes, disableSizesAutoSort]);
+  }, [srcSetAttribute, sizesValue, desktopFirstSizesValue, disableSizesAutoSortValue]);
 
   const alternativeText = useMemo(() => {
     if (typeof alt !== 'undefined') {
@@ -67,7 +80,7 @@ export const StrapiImage = memo(function StrapiImage({
     }
     return `${image.width} / ${image.height}`;
   }, [aspectRatio, image]);
-  const styleValue = useMemo<CSSProperties | undefined>(() => {
+  const styleAttribute = useMemo<CSSProperties | undefined>(() => {
     if (!aspectRatioValue) {
       return style;
     }
@@ -81,11 +94,11 @@ export const StrapiImage = memo(function StrapiImage({
     <img
       {...props}
       src={image.url}
-      srcSet={srcSetValue}
-      sizes={sizesValue}
+      srcSet={srcSetAttribute}
+      sizes={sizesAttribute}
       alt={alternativeText}
       width={image.width}
-      style={styleValue}
+      style={styleAttribute}
     />
   );
 });

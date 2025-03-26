@@ -4,7 +4,11 @@
   "license": "MIT",
   "author": "Mikhail Panichev <denis.invader@gmail.com>",
   "repository": "github:denisinvader/react-strapi-image",
-  "keywords": ["Strapi", "image", "images"],
+  "keywords": [
+    "strapi",
+    "image",
+    "images"
+  ],
   "bugs": {
     "url": "https://github.com/denisinvader/react-strapi-image/issues"
   },
@@ -30,6 +34,8 @@
   "devDependencies": {
     "@emotion/css": "^11.13.5",
     "@eslint/js": "^9.21.0",
+    "@faker-js/faker": "^9.6.0",
+    "@radix-ui/themes": "^3.2.1",
     "@storybook/react": "^8.6.8",
     "@storybook/react-vite": "^8.6.8",
     "@stylistic/eslint-plugin": "^4.2.0",

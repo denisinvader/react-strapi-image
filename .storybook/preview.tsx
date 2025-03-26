@@ -1,6 +1,8 @@
 import React from 'react';
 import type { Preview } from '@storybook/react';
 import { css } from '@emotion/css';
+import '@radix-ui/themes/styles.css';
+import { Theme } from '@radix-ui/themes';
 
 const globalStyles = css({
   '& img': {
@@ -14,6 +16,11 @@ const preview: Preview = {
       <div className={globalStyles}>
         <Story />
       </div>
+    ),
+    (Story) => (
+      <Theme>
+        <Story />
+      </Theme>
     ),
   ],
   parameters: {

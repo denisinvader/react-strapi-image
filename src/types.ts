@@ -27,3 +27,15 @@ export interface StrapiMediaImage extends StrapiMediaImageFile {
   updatedAt?: string;
   formats?: Record<string, StrapiMediaImageFormat | undefined>;
 }
+
+export interface StrapiImageConfig {
+  formats?: string[];
+  transformUrl?: (url: string) => string;
+  sizes?: string | {
+    [K: `${number}rem`]: string;
+    [K: `${number}px`]: string;
+    fallback?: string;
+  };
+  desktopFirstSizes?: boolean;
+  disableSizesAutoSort?: boolean;
+}
