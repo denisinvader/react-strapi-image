@@ -1,0 +1,40 @@
+.rsi-root {
+  overflow: hidden;
+  position: relative;
+  user-select: none;
+}
+
+.rsi-img,
+.rsi-placeholder {
+  block-size: 100%;
+  min-block-size: 100%;
+  min-inline-size: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.rsi-img {
+  opacity: 1;
+  position: relative;
+  transition: opacity var(--rsi-transition-duration, .2s) var(--rsi-transition-easing, ease-out);
+  z-index: 2;
+}
+.rsi-img-loading {
+  opacity: 0;
+}
+
+.rsi-placeholder {
+  opacity: 0;
+  position: absolute;
+  transition: opacity var(--rsi-transition-duration, .2s) var(--rsi-transition-easing, ease-out) var(--rsi-transition-duration, .2s);
+  z-index: 1;
+}
+.rsi-placeholder-active {
+  opacity: 1;
+  transition: none;
+}
+.rsi-placeholder-img {
+  filter: blur(var(--rsi-placeholder-blur, 48px));
+  transform-origin: center;
+  transform: scale(var(--rsi-placeholder-scale, 1.25));
+}

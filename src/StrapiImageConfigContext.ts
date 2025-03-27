@@ -1,9 +1,11 @@
 import { createContext, useContext } from 'react';
 import type { StrapiImageConfig } from './types';
 
+type NotRequiredConfigFields = 'sizes' | 'placeholder';
+
 export type StrapiImageConfigContextValue = (
-  & Omit<Required<StrapiImageConfig>, 'sizes'>
-  & Pick<StrapiImageConfig, 'sizes'>
+  & Omit<Required<StrapiImageConfig>, NotRequiredConfigFields>
+  & Pick<StrapiImageConfig, NotRequiredConfigFields>
 );
 
 export const defaultConfigValue: StrapiImageConfigContextValue = {
@@ -11,6 +13,8 @@ export const defaultConfigValue: StrapiImageConfigContextValue = {
   transformUrl: (url) => url,
   desktopFirstSizes: false,
   disableSizesAutoSort: false,
+  placeholderFormat: 'thumbnail',
+  initialLoading: false,
 };
 
 export const StrapiImageConfigContext = createContext<StrapiImageConfigContextValue>(defaultConfigValue);

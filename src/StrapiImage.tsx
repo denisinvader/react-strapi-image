@@ -3,10 +3,11 @@ import { StrapiMediaImage } from './types';
 import { computeSizesValue } from './utils/compute-sizes-value';
 import { computeSrcSetValue } from './utils/compute-src-set-value';
 import { useStrapiImageConfigContext } from './StrapiImageConfigContext';
+import { computeAspectRatio } from './utils/compute-aspect-ratio';
 
 export interface StrapiImageProps extends Omit<
   ComponentPropsWithRef<'img'>,
-  'src' | 'srcSet' | 'sizes' | 'style'
+  'src' | 'srcSet' | 'sizes'
 > {
   image: StrapiMediaImage;
   formats?: string[];
@@ -19,7 +20,6 @@ export interface StrapiImageProps extends Omit<
   desktopFirstSizes?: boolean;
   disableSizesAutoSort?: boolean;
   aspectRatio?: 'intrinsic' | string;
-  style?: Omit<CSSProperties, 'aspectRatio'>;
 }
 
 export const StrapiImage = memo(function StrapiImage({
@@ -29,7 +29,7 @@ export const StrapiImage = memo(function StrapiImage({
   sizes,
   desktopFirstSizes,
   disableSizesAutoSort,
-  aspectRatio = 'intrinsic',
+  aspectRatio,
   style,
   alt,
   ...props
@@ -71,15 +71,9 @@ export const StrapiImage = memo(function StrapiImage({
     return image.alternativeText || image.caption || image.name || '';
   }, [alt, image]);
 
-  const aspectRatioValue = useMemo(() => {
-    if (aspectRatio !== 'intrinsic') {
-      return undefined;
-    }
-    if (!image.width || !image.height || image.width < 0 || image.height < 0) {
-      return undefined;
-    }
-    return `${image.width} / ${image.height}`;
-  }, [aspectRatio, image]);
+  const aspectRatioValue = useMemo(() => (
+    computeAspectRatio(image, aspectRatio)
+  ), [aspectRatio, image]);
   const styleAttribute = useMemo<CSSProperties | undefined>(() => {
     if (!aspectRatioValue) {
       return style;
@@ -90,10 +84,12 @@ export const StrapiImage = memo(function StrapiImage({
     return { ...style, aspectRatio: aspectRatioValue };
   }, [aspectRatioValue, style]);
 
+  const srcAttribute = useMemo(() => transformUrlValue(image.url), [transformUrlValue, image]);
+
   return (
     <img
       {...props}
-      src={image.url}
+      src={srcAttribute}
       srcSet={srcSetAttribute}
       sizes={sizesAttribute}
       alt={alternativeText}

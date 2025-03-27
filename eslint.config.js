@@ -33,6 +33,7 @@ export default tseslint.config(
       ...stylistic.configs.recommended.rules,
       ...react.configs.recommended.rules,
       ...reactHooks.configs.recommended.rules,
+      'no-console': 'error',
       '@stylistic/indent': ['error', 2],
       '@stylistic/semi': ['error', 'always'],
       '@stylistic/quote-props': ['error', 'as-needed'],

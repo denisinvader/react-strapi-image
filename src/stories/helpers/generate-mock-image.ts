@@ -33,6 +33,9 @@ export const generateMockImage = function generateMockImage({
       .keys({ ...formats, thumbnail: 150 })
       .reduce<Exclude<StrapiMediaImage['formats'], undefined>>((acc, key) => {
         const localWidth = formats[key];
+        if (localWidth >= width) {
+          return acc;
+        }
         const localHeight = Math.round((localWidth * height) / width);
         acc[key] = {
           width: localWidth,

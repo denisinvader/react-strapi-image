@@ -1,3 +1,5 @@
+import type { ReactNode } from 'react';
+
 interface StrapiMediaImageFile {
   name?: string;
   hash?: string;
@@ -38,4 +40,7 @@ export interface StrapiImageConfig {
   };
   desktopFirstSizes?: boolean;
   disableSizesAutoSort?: boolean;
+  placeholder?: ReactNode;
+  placeholderFormat?: string;
+  initialLoading?: boolean;
 }
