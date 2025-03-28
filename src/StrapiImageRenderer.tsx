@@ -8,17 +8,14 @@ import {
   useRef,
   useState,
 } from 'react';
-import { cx } from './utils/concat-class-names';
-import { StrapiImage, StrapiImageProps } from './StrapiImage';
-import { Placeholder } from './Placeholder';
-import { useStrapiImageConfigContext } from './StrapiImageConfigContext';
-import { computeAspectRatio } from './utils/compute-aspect-ratio';
 import { StrapiMediaImage } from './types';
+import { computeAspectRatio } from './internal/utils/compute-aspect-ratio';
+import { cx } from './internal/utils/concat-class-names';
+import { useConfigContext } from './internal/ConfigContext';
+import { Placeholder } from './internal/Placeholder';
+import { StrapiImage, StrapiImageProps } from './StrapiImage';
 
-export interface StrapiImageRendererProps extends Omit<
-  ComponentPropsWithRef<'div'>,
-  'children'
-> {
+export interface StrapiImageRendererProps extends Omit<ComponentPropsWithRef<'div'>, 'children'> {
   initialLoading?: boolean;
   lazy?: boolean | 'very';
   aspectRatio?: string;
@@ -60,7 +57,7 @@ export const StrapiImageRenderer = memo(function StrapiImageRenderer({
   style,
   ...props
 }: StrapiImageRendererProps) {
-  const config = useStrapiImageConfigContext();
+  const config = useConfigContext();
   const initialLoadingStatue = typeof initialLoading === 'boolean'
     ? initialLoading
     : config.initialLoading;

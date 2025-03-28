@@ -1,4 +1,4 @@
-import { StrapiMediaImage } from '../types';
+import { StrapiMediaImage } from '../../types';
 import { checkIsImageFormat } from './check-is-image-format';
 
 interface ComputeSrcSetValueProps {

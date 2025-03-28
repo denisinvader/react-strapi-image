@@ -1,5 +1,5 @@
+import { StrapiMediaImage } from '../../types';
 import { intrinsic } from '../constants';
-import { StrapiMediaImage } from '../types';
 
 export const computeAspectRatio = function computeAspectRatio(
   image: StrapiMediaImage,

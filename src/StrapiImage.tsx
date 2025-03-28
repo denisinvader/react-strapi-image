@@ -1,9 +1,9 @@
 import { ComponentPropsWithRef, CSSProperties, memo, useMemo } from 'react';
 import { StrapiMediaImage } from './types';
-import { computeSizesValue } from './utils/compute-sizes-value';
-import { computeSrcSetValue } from './utils/compute-src-set-value';
-import { useStrapiImageConfigContext } from './StrapiImageConfigContext';
-import { computeAspectRatio } from './utils/compute-aspect-ratio';
+import { computeAspectRatio } from './internal/utils/compute-aspect-ratio';
+import { computeSizesValue } from './internal/utils/compute-sizes-value';
+import { computeSrcSetValue } from './internal/utils/compute-src-set-value';
+import { useConfigContext } from './internal/ConfigContext';
 
 export interface StrapiImageProps extends Omit<
   ComponentPropsWithRef<'img'>,
@@ -34,7 +34,7 @@ export const StrapiImage = memo(function StrapiImage({
   alt,
   ...props
 }: StrapiImageProps) {
-  const config = useStrapiImageConfigContext();
+  const config = useConfigContext();
   const formatsValue = formats || config.formats;
   const transformUrlValue = transformUrl || config.transformUrl;
   const sizesValue = sizes || config.sizes;

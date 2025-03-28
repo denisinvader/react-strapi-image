@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Flex, Skeleton, Spinner } from '@radix-ui/themes';
-import { StrapiImageRenderer } from '../';
+import { StrapiImageRenderer } from '../../';
 import { generateMockImage } from './helpers/generate-mock-image';
 
 const meta: Meta<typeof StrapiImageRenderer> = {

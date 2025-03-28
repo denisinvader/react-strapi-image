@@ -1,4 +1,4 @@
-import { StrapiMediaImage } from '../../types';
+import { StrapiMediaImage } from '../../../types';
 
 interface GenerateMockImageProps {
   background?: string;

@@ -1,4 +1,4 @@
-import { StrapiMediaImageFormat } from '../types';
+import { StrapiMediaImageFormat } from '../../types';
 
 export const checkIsImageFormat = (value: unknown): value is StrapiMediaImageFormat => (
   typeof value === 'object'

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { faker } from '@faker-js/faker';
 import { BlocksContent, BlocksRenderer } from '@strapi/blocks-react-renderer';
-import { StrapiImage } from '../';
+import { StrapiImage } from '../../';
 import { WindowSizeIndicator } from './helpers/WindowSizeIndicator';
 import { generateMockImage } from './helpers/generate-mock-image';
 

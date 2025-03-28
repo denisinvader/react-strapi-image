@@ -1,9 +1,9 @@
 import { ReactNode, memo, useMemo } from 'react';
-import { StrapiMediaImage } from './types';
-import { cx } from './utils/concat-class-names';
+import { StrapiMediaImage } from '../types';
 import { checkIsImageFormat } from './utils/check-is-image-format';
 import { computeAspectRatio } from './utils/compute-aspect-ratio';
-import { useStrapiImageConfigContext } from './StrapiImageConfigContext';
+import { cx } from './utils/concat-class-names';
+import { useConfigContext } from './ConfigContext';
 
 export interface PlaceholderProps {
   isActive: boolean;
@@ -28,7 +28,7 @@ export const Placeholder = memo(function Placeholder({
   transformUrl,
   className,
 }: PlaceholderProps) {
-  const config = useStrapiImageConfigContext();
+  const config = useConfigContext();
   const children = typeof content !== 'undefined'
     ? content
     : config.placeholder;

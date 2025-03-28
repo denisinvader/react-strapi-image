@@ -1,6 +1,6 @@
 import { ReactNode, memo, useMemo } from 'react';
-import type { StrapiImageConfig } from './types';
-import { StrapiImageConfigContext, defaultConfigValue } from './StrapiImageConfigContext';
+import { StrapiImageConfig } from './types';
+import { ConfigContext, defaultConfigValue } from './internal/ConfigContext';
 
 export interface StrapiImageConfigProviderProps {
   config: StrapiImageConfig;
@@ -17,8 +17,8 @@ export const StrapiImageConfigProvider = memo(function StrapiImageConfigProvider
   }), [config]);
 
   return (
-    <StrapiImageConfigContext.Provider value={value}>
+    <ConfigContext.Provider value={value}>
       {children}
-    </StrapiImageConfigContext.Provider>
+    </ConfigContext.Provider>
   );
 });

@@ -1,14 +1,14 @@
 import { createContext, useContext } from 'react';
-import type { StrapiImageConfig } from './types';
+import { StrapiImageConfig } from '../types';
 
 type NotRequiredConfigFields = 'sizes' | 'placeholder';
 
-export type StrapiImageConfigContextValue = (
+export type ConfigContextValue = (
   & Omit<Required<StrapiImageConfig>, NotRequiredConfigFields>
   & Pick<StrapiImageConfig, NotRequiredConfigFields>
 );
 
-export const defaultConfigValue: StrapiImageConfigContextValue = {
+export const defaultConfigValue: ConfigContextValue = {
   formats: ['large', 'medium', 'small'],
   transformUrl: (url) => url,
   desktopFirstSizes: false,
@@ -17,6 +17,6 @@ export const defaultConfigValue: StrapiImageConfigContextValue = {
   initialLoading: false,
 };
 
-export const StrapiImageConfigContext = createContext<StrapiImageConfigContextValue>(defaultConfigValue);
+export const ConfigContext = createContext<ConfigContextValue>(defaultConfigValue);
 
-export const useStrapiImageConfigContext = () => useContext(StrapiImageConfigContext);
+export const useConfigContext = () => useContext(ConfigContext);

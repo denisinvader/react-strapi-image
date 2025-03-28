@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { faker } from '@faker-js/faker';
 import { Container, Grid, Card, Inset, Text } from '@radix-ui/themes';
-import { StrapiImage, StrapiImageConfigProvider } from '../';
+import { StrapiImage, StrapiImageConfigProvider } from '../../';
 import { generateMockImage } from './helpers/generate-mock-image';
 import { imageColors } from './helpers/image-colors';
 
