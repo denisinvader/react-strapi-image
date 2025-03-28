@@ -1,8 +1,8 @@
 # Changelog
 
-## wip
+## v0.3.0
 
-- **Feature:** add `<StrapiImageRenderer />` component (WIP).
+- **Feature:** add `<StrapiImageRenderer />` component.
 - **Fix:** update `StrapiMediaImage` interface to match `@strapi/blocks-react-renderer` definition.
 
 ## v0.2.0
