@@ -13,7 +13,6 @@ import { StrapiImage, StrapiImageProps } from './StrapiImage';
 import { Placeholder } from './Placeholder';
 import { useStrapiImageConfigContext } from './StrapiImageConfigContext';
 import { computeAspectRatio } from './utils/compute-aspect-ratio';
-import './styles.css';
 import { StrapiMediaImage } from './types';
 
 export interface StrapiImageRendererProps extends Omit<

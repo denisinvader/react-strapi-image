@@ -13,13 +13,29 @@
     "url": "https://github.com/denisinvader/react-strapi-image/issues"
   },
   "type": "module",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "./dist/react-strapi-image.js",
+  "types": "./dist/react-strapi-image.d.ts",
+  "module": "./dist/react-strapi-image.js",
+  "style": "./dist/react-strapi-image.css",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/react-strapi-image.d.ts",
+        "default": "./dist/react-strapi-image.js"
+      },
+      "require": {
+        "types": "./dist/react-strapi-image.d.ts",
+        "default": "./dist/react-strapi-image.cjs"
+      }
+    },
+    "./css": "./dist/react-strapi-image.css",
+    "./package.json": "./package.json"
+  },
   "files": [
-    "dist/**/*"
+    "./dist/**/*"
   ],
   "sideEffects": [
-    "**/*.css"
+    "*.css"
   ],
   "scripts": {
     "build": "tsc -b && vite build",
@@ -31,8 +47,10 @@
     "prepublishOnly": "tsc -b && eslint src && vitest run && vite build"
   },
   "peerDependencies": {
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "@types/react": "*",
+    "@types/react-dom": "*",
+    "react": "^19",
+    "react-dom": "^19"
   },
   "devDependencies": {
     "@emotion/css": "^11.13.5",
@@ -63,7 +81,6 @@
     "typescript-eslint": "^8.24.1",
     "vite": "^6.2.0",
     "vite-plugin-dts": "^4.5.3",
-    "vite-plugin-lib-inject-css": "^2.2.1",
     "vitest": "^3.0.9"
   }
 }
