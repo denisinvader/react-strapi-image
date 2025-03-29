@@ -29,9 +29,7 @@ export const Placeholder = memo(function Placeholder({
   className,
 }: PlaceholderProps) {
   const config = useConfigContext();
-  const children = typeof content !== 'undefined'
-    ? content
-    : config.placeholder;
+  const children = typeof content !== 'undefined' ? content : config.placeholder;
   const formatValue = format || config.placeholderFormat;
   const transformUrlValue = transformUrl || config.transformUrl;
 
@@ -62,7 +60,11 @@ export const Placeholder = memo(function Placeholder({
     className,
   ), [isActive, className, children]);
 
-  if (typeof children === 'undefined' && src) {
+  if (typeof children === 'undefined') {
+    if (!src) {
+      return null;
+    }
+
     return (
       <img
         role="presentation"
@@ -77,6 +79,10 @@ export const Placeholder = memo(function Placeholder({
         }}
       />
     );
+  }
+
+  if (!children) {
+    return null;
   }
 
   return (

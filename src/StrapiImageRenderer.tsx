@@ -65,7 +65,11 @@ export const StrapiImageRenderer = memo(function StrapiImageRenderer({
   const imageRef = useRef<HTMLImageElement>(null);
   const [isLoading, setIsLoading] = useState(initialLoadingStatue);
   const handleImageLoaded = useCallback(() => setIsLoading(false), []);
-  useEffect(() => setIsLoading(!imageRef.current || !imageRef.current.complete), []);
+  useEffect(() => {
+    if (imageRef.current) {
+      setIsLoading(!imageRef.current.complete);
+    }
+  }, []);
 
   const aspectRatioValue = useMemo(() => (
     computeAspectRatio(image, aspectRatio)
