@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.0.0
+
+- **Feature:** add support for React starting from 16.8.
+
 ## v0.3.0
 
 - **Feature:** add `<StrapiImageRenderer />` component.
