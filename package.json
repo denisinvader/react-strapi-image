@@ -47,10 +47,7 @@
     "prepublishOnly": "tsc -b && eslint src && vitest run && vite build"
   },
   "peerDependencies": {
-    "@types/react": "*",
-    "@types/react-dom": "*",
-    "react": "^19",
-    "react-dom": "^19"
+    "react": "^19 || ^18 || ^17 || ^16.8"
   },
   "devDependencies": {
     "@emotion/css": "^11.13.5",

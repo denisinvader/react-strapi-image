@@ -1,6 +1,7 @@
 import {
   ComponentPropsWithRef,
   ReactNode,
+  forwardRef,
   memo,
   useCallback,
   useEffect,
@@ -19,7 +20,6 @@ export interface StrapiImageRendererProps extends Omit<ComponentPropsWithRef<'di
   initialLoading?: boolean;
   lazy?: boolean | 'very';
   aspectRatio?: string;
-
   image: StrapiMediaImage;
   formats?: StrapiImageProps['formats'];
   transformUrl?: StrapiImageProps['transformUrl'];
@@ -28,7 +28,6 @@ export interface StrapiImageRendererProps extends Omit<ComponentPropsWithRef<'di
   disableSizesAutoSort?: StrapiImageProps['disableSizesAutoSort'];
   imageAspectRatio?: string;
   imageClassName?: string;
-
   placeholder?: ReactNode;
   placeholderFormat?: string;
   placeholderScale?: number | `${number}`;
@@ -36,27 +35,27 @@ export interface StrapiImageRendererProps extends Omit<ComponentPropsWithRef<'di
   backgroundColor?: string;
 }
 
-export const StrapiImageRenderer = memo(function StrapiImageRenderer({
+export const StrapiImageRenderer = memo(forwardRef<HTMLDivElement, StrapiImageRendererProps>(function StrapiImageRenderer({
   initialLoading,
   lazy,
   aspectRatio,
   image,
-  placeholder,
-  placeholderFormat,
-  placeholderScale,
-  imageAspectRatio,
-  imageClassName,
   formats,
   transformUrl,
   sizes,
   desktopFirstSizes,
   disableSizesAutoSort,
+  imageAspectRatio,
+  imageClassName,
+  placeholder,
+  placeholderFormat,
+  placeholderScale,
   placeholderClassName,
   backgroundColor,
   className,
   style,
   ...props
-}: StrapiImageRendererProps) {
+}, ref) {
   const config = useConfigContext();
   const initialLoadingStatue = typeof initialLoading === 'boolean'
     ? initialLoading
@@ -100,6 +99,7 @@ export const StrapiImageRenderer = memo(function StrapiImageRenderer({
   return (
     <div
       {...props}
+      ref={ref}
       className={classNames}
       style={styleAttribute}
     >
@@ -130,4 +130,5 @@ export const StrapiImageRenderer = memo(function StrapiImageRenderer({
       />
     </div>
   );
-});
+}));
+StrapiImageRenderer.displayName = 'StrapiImageRenderer';
