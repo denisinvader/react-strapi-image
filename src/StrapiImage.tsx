@@ -68,7 +68,7 @@ export const StrapiImage = memo(forwardRef<HTMLImageElement, StrapiImageProps>(f
     if (typeof alt !== 'undefined') {
       return alt;
     }
-    return image.alternativeText || image.caption || image.name || '';
+    return image.alternativeText || image.caption || '';
   }, [alt, image]);
 
   const aspectRatioValue = useMemo(() => (

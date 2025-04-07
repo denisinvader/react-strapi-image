@@ -170,6 +170,7 @@ All props except `image` are optional.
 |:---|:---|:---|
 |`initialLoading`|`boolean`|When `true`, a placeholder is shown before the actual image until it loads. See details below.|
 |`lazy`|`boolean \| 'very'`|When `true`, `loading="lazy"` is pllied to `<StrapiImage />`. When `'very'`, the placeholder image also gets `loading="lazy"` (only for default placeholder).|
+|`alt`|`string`|Passes `alt` attribute to HTML `<img />` tag.|
 |`aspectRatio`|`string`|CSS aspect ratio for the **container element.** If set to `'intrinsic'` or left undefined, the ratio is computed from the `image` object. `style.aspectRatio` overrides this prop for container element (but not for the image).|
 |`image`|`StrapiMediaImage`|Strapi uploaded image attributes. **Required.**|
 |`formats`|`string[]`|List of uploaded image formats to use. Defaults to `['small', 'medium', 'large']` aligning with [the default Strapi responsive images configuration.](https://docs.strapi.io/cms/features/media-library#responsive-images)|

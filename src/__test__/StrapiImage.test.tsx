@@ -191,10 +191,15 @@ test('sets image caption to alt attribute if no alternativeText', () => {
   expect(img).toHaveAttribute('alt', 'caption-text');
 });
 
-test('sets image name to alt attribute if no alternativeText and no caption', () => {
-  render(<StrapiImage image={{ ...image, alternativeText: null, caption: null, name: 'image.png' }} />);
+test('passes alt attribute if defined', () => {
+  render((
+    <StrapiImage
+      image={{ ...image, alternativeText: 'image-internal-alt' }}
+      alt="custom-alt-value"
+    />
+  ));
   const img = screen.getByRole('img');
-  expect(img).toHaveAttribute('alt', 'image.png');
+  expect(img).toHaveAttribute('alt', 'custom-alt-value');
 });
 
 test('consumes formats, transformUrl, sizes and desktopFirstSizes from StrapiImageConfigProvider', () => {

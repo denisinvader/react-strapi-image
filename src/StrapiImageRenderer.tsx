@@ -19,6 +19,7 @@ import { StrapiImage, StrapiImageProps } from './StrapiImage';
 export interface StrapiImageRendererProps extends Omit<ComponentPropsWithRef<'div'>, 'children'> {
   initialLoading?: boolean;
   lazy?: boolean | 'very';
+  alt?: string;
   aspectRatio?: string;
   image: StrapiMediaImage;
   formats?: StrapiImageProps['formats'];
@@ -38,6 +39,7 @@ export interface StrapiImageRendererProps extends Omit<ComponentPropsWithRef<'di
 export const StrapiImageRenderer = memo(forwardRef<HTMLDivElement, StrapiImageRendererProps>(function StrapiImageRenderer({
   initialLoading,
   lazy,
+  alt,
   aspectRatio,
   image,
   formats,
@@ -124,6 +126,7 @@ export const StrapiImageRenderer = memo(forwardRef<HTMLDivElement, StrapiImageRe
         desktopFirstSizes={desktopFirstSizes}
         disableSizesAutoSort={disableSizesAutoSort}
         aspectRatio={imageAspectRatio || aspectRatioValue}
+        alt={alt}
         loading={lazy ? 'lazy' : 'eager'}
         className={imageClassNames}
         onLoad={handleImageLoaded}

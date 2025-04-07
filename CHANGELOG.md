@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.1.0
+
+- **Feature:** allow to pass `alt` attribute in `<StrapiImageRenderer />`.
+- **Fix:** remove file name from `alt` fallback values.
+
 ## v1.0.0
 
 - **Feature:** add support for React starting from 16.8.
